@@ -83,7 +83,7 @@ function rule90(rctx, size)
 
 
 	//color to fill box with
-	rctx.fillStyle = "Red";
+	rctx.fillStyle = "Yellow";
 
 	//create a 2D array with respect to the grid filled with empty space
 	let array = Array(rctx.canvas.width/10).fill().map(() => Array(rctx.canvas.height/10).fill(0));
@@ -178,7 +178,7 @@ function rule90(rctx, size)
 	}
 
 	// more efficient with states
-	for( j = 1; j < 40; j++)
+	for( j = 1; j < 39; j++)
 	{
 		switch (cSTATE) { 
 		  case 1:              // 00 
