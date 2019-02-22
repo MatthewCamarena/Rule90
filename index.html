@@ -81,7 +81,7 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
 function rule90(rctx, size)
 {	
 
-
+	draw_grid( context, 10, 50, 'white', 'yellow' );
 	//color to fill box with
 	rctx.fillStyle = "Yellow";
 
@@ -286,5 +286,6 @@ function draw_title( context )
 
 </script>
 <button type="button" onclick="rule90(context, 3)">3 Lines</button> 
+
 <button type="button" onclick="rule90(context, 40)">All</button>
 </html>
