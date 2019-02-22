@@ -178,7 +178,7 @@ function rule90(rctx, size)
 	}
 
 	// more efficient with states
-	for( j = 1; j < 39; j++)
+	for( j = 1; j < 38; j++)
 	{
 		switch (cSTATE) { 
 		  case 1:              // 00 
@@ -238,11 +238,16 @@ function rule90(rctx, size)
 		    break;
 
 		}
-
+		
+		
 	}//forloopj
 
-
-
+	//only edge case that matters
+	if(cSTATE == 3)
+	{
+	array[i+1][39] = 1;
+	rctx.fillRect((39)*10,(1+i)*10,10,10);
+	}
 
 	}//for loop i
 
