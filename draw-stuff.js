@@ -52,9 +52,9 @@ function draw_grid( rctx, rminor, rmajor, rstroke, rfill  )
 function rule90(rctx, size)
 {	
 
-
+	
 	//color to fill box with
-	rctx.fillStyle = "Red";
+	rctx.fillStyle = "Purple";
 
 	//create a 2D array with respect to the grid filled with empty space
 	let array = Array(rctx.canvas.width/10).fill().map(() => Array(rctx.canvas.height/10).fill(0));
@@ -71,7 +71,7 @@ function rule90(rctx, size)
 	// i and j will handle position starting at [0,0]
 	var i = 0;
 	var cSTATE = 0; // initial state will be 0 
-
+	rctx.fillStyle = "Red";
 
 	for(i;  i < size; i++)
 	{ //for loop on rows
@@ -83,7 +83,7 @@ function rule90(rctx, size)
 	{
 		if(array[i][j+1])	    // if 11
 		{	
-			//edge case?
+			//edge case assuming edge is 0 thus 011
 			array[i+1][j] = 1;
 			rctx.fillRect((j)*10,(1+i)*10,10,10);
 
@@ -117,7 +117,7 @@ function rule90(rctx, size)
 	{
 		if(array[i][j+1]) 		// if 01
 		{
-			//edge case
+			//edge case assuming edge is 0 ... 001
 			array[i+1][j] = 1;
 			rctx.fillRect((j)*10,(1+i)*10,10,10);
 
@@ -149,15 +149,18 @@ function rule90(rctx, size)
 	}
 
 	// more efficient with states
-	for( j = 1; j < 40; j++)
+
+	for( j = 1; j < 39; j++)
 	{
 		switch (cSTATE) { 
 		  case 1:              // 00 
 		    if(array[i][j+2])  //001
 		    {
+		    	rctx.fillStyle = "Red";
 		    	array[i+1][j+1] = 1;
 		    	rctx.fillRect((j+1)*10,(1+i)*10,10,10);
 		    	cSTATE = 2;
+
 		    }
 		    else	          //000
 		    {
@@ -167,6 +170,7 @@ function rule90(rctx, size)
 		  case 2: 			  //01
 		    if(array[i][j+2]) //011
 		    {
+		    	rctx.fillStyle = "Blue";
 		    	array[i+1][j+1] = 1;
 		    	rctx.fillRect((j+1)*10,(1+i)*10,10,10);
 		    	cSTATE = 4;
@@ -186,6 +190,7 @@ function rule90(rctx, size)
 		    }
 		    else			  //100
 		    {
+		    	rctx.fillStyle = "Blue";
 		    	array[i+1][j+1] = 1;
 		    	rctx.fillRect((j+1)*10,(1+i)*10,10,10);
 		    	cSTATE = 1;
@@ -195,12 +200,14 @@ function rule90(rctx, size)
 		  case 4:             //11
 		    if(array[i][j+2]) //111
 		    {
+		    	rctx.fillStyle = "Blue";
 		    	array[i+1][j+1] = 1;
 		    	rctx.fillRect((j+1)*10,(1+i)*10,10,10);
 		    	cSTATE = 4;
 		    }
 		    else			  //110
 		    {
+		    	rctx.fillStyle = "Blue";
 		    	array[i+1][j+1] = 1;
 		    	rctx.fillRect((j+1)*10,(1+i)*10,10,10);
 		    	cSTATE = 3;
